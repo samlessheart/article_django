@@ -1,0 +1,26 @@
+{%extends "article/base.html"%}
+{%load static%}
+
+{% block headimage %}
+<div class="container "><img class="head-image" src="{%static 'article\images\socratesa_death.png'%}" alt="No image"
+        width=100%> </div>
+{%endblock headimage%}
+
+{%block content%}
+{%if object_list%}
+
+{%for object in object_list%}
+<article class="media content-section">
+    <div class="media-body">
+         <h2><a class="article-title" href="{%url 'article-Detail' object.id%}">{{ object.title }}</a></h2> 
+        <div class="article-metadata">
+            <small class="text-muted">{{ object.date|date:"d N, Y" }}</small>
+        </div>
+        <p class="article-content">{{ object.small_content }}</p>
+        <a class="article-content" href="{{post.link}}">{{ post.link }}</a>
+
+    </div>
+</article>
+{%endfor%}
+{%endif%}
+{%endblock content%}
